@@ -80,5 +80,30 @@ Vue.js 中可以使用 vuex 来做状态管理，可以利用 provide/inject 来
 ## 属性 props
 组件里定义的 props，都是单向数据流，也就是只能通过父级修改，组件自己不能修改 props 的值，只能修改定义在 data 里的数据，非要修改，也是通过后面介绍的自定义事件通知父级，由父级来修改。
 ## 自定义事件
+
+
 ## bus
+
+```js
+Vue.prototype.$bus = new Vue();
+```
+
+```js
+this.$bus.$emit('add-todo', 'new todo');
+```
+
+```js
+created () {
+  this.$bus.$on('add-todo', this.addTodo);
+},
+methods: {
+  addTodo (todo) {
+    this.todos.push(todo);
+  }
+}
+
+```
+
 ## 插槽 slot
+
+
